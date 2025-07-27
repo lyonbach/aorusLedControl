@@ -53,10 +53,10 @@ class Device(object):
         self._dev.close()
         self._dev = None
 
-class AourusLEDController(Device):
+class AorusLEDController(Device):
 
     def __init__(self):
-        super(AourusLEDController, self).__init__(IT8297_RGB_CONTROLLER_VENDOR_ID, IT8297_RGB_CONTROLLER_PRODUCT_ID)
+        super(AorusLEDController, self).__init__(IT8297_RGB_CONTROLLER_VENDOR_ID, IT8297_RGB_CONTROLLER_PRODUCT_ID)
         self._color = None
         self._current_group_idx = None
         self._feature_report_color = list(FEATURE_REPORT_COLOR)
@@ -64,7 +64,7 @@ class AourusLEDController(Device):
 
     def __str__(self):
 
-        info = super(AourusLEDController, self).__str__()
+        info = super(AorusLEDController, self).__str__()
         info += "\nAorus I X570 PRO WIFI - Side IO Leds Controller"
         return info
 

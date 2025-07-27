@@ -1,6 +1,6 @@
 #!../venv/bin/python
 
-from device import AourusLEDController
+from device import AorusLEDController
 from color import *
 import time
 
@@ -16,7 +16,7 @@ RAINBOW_COLORS = [
 
 if __name__ == "__main__":
 
-    aorus = AourusLEDController()
+    aorus = AorusLEDController()
     aorus.open()  # Ensure the device is open.
     cycles = 100
     wait_time = 2
