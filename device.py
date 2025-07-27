@@ -5,17 +5,17 @@ import hid
 IT8297_RGB_CONTROLLER_VENDOR_ID = 0x048d
 IT8297_RGB_CONTROLLER_PRODUCT_ID = 0x8297
 
-# FEATURE_REPORT_COLOR = (0xcc, 
-#     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-#     0x01,0x5a,
-#     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
-FEATURE_REPORT_COLOR = (0xcc, 
+# Aorus I X570 PRO WIFI INFO
+# idVendor           0x048d Integrated Technology Express, Inc.
+# idProduct          0x8297 IT8297 RGB LED Controller
+
+FEATURE_REPORT_COLOR = (0xcc,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x01,0x5a,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
 
-FEATURE_REPORT_COMMIT = (0xcc, 0x28, 0xff, 
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+FEATURE_REPORT_COMMIT = (0xcc, 0x28, 0xff,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
 
 
@@ -30,7 +30,7 @@ class Device(object):
     def open(self):
 
         assert self._dev is None, "Device already opened!"
-            
+
         try:
             self._dev = hid.Device(self._vendor_id, self._product_id)
             # self._dev.open(self._vendor_id, self._product_id)
@@ -83,7 +83,7 @@ class AourusLEDController(Device):
         """
         Sets the current color of the whole led group.
         """
-        
+
         if self._current_group_idx is None:
             return
 
@@ -105,8 +105,8 @@ class AourusLEDController(Device):
             (0x21,0x02), #LED_CPU
             (0x22,0x04), #LED_CX
             (0x23,0x08), #LED_SID
-            (0x25,0x20), #D_LED1
-            (0x26,0x40)  #D_LED2
+            (0x25,0x20), #D_LED1 TODO PROBABLE MODES
+            (0x26,0x40)  #D_LED2 TODO PROBABLE MODES
         )
 
         self._current_group_idx = new_group_idx
@@ -126,8 +126,8 @@ class AourusLEDController(Device):
         self._dev.send_feature_report(bytes(self._feature_report_commit))
         if close:
             self.close()
-    
-    def set_color(self, color: Color, idx=None, close=False):
+
+    def set_color(self, color, idx=None, close=False):
 
         def _set_color(color):
             self.color = color.get()
