@@ -1,5 +1,5 @@
 #!../venv/bin/python
-import copy
+from color import Color
 import hid
 
 IT8297_RGB_CONTROLLER_VENDOR_ID = 0x048d
@@ -124,5 +124,21 @@ class AourusLEDController(Device):
 
         self._dev.send_feature_report(bytes(self._feature_report_color))
         self._dev.send_feature_report(bytes(self._feature_report_commit))
+        if close:
+            self.close()
+    
+    def set_color(self, color: Color, idx=None, close=False):
+
+        def _set_color(color):
+            self.color = color.get()
+            self.update()
+
+        if idx is not None:
+            self.current_group_idx = max(0, min(3, idx))
+        else:
+            for idx in range(4):
+                self.current_group_idx = idx
+                _set_color(color)
+
         if close:
             self.close()
