@@ -64,11 +64,11 @@ class Blue(Color):
 
 class Orange(Color):
     def __init__(self):
-        super().__init__(255, 127, 0)
+        super().__init__(255, 50, 0)
 
 class Yellow(Color):
     def __init__(self):
-        super().__init__(255, 255, 0)
+        super().__init__(155, 55, 0)
 
 class Cyan(Color):
     def __init__(self):
@@ -81,3 +81,11 @@ class Indigo(Color):
 class Violet(Color):
     def __init__(self):
         super().__init__(148, 0, 211)
+
+class Off(Color):
+    def __init__(self):
+        super().__init__(0, 0, 0)
+
+class White(Color):
+    def __init__(self):
+        super().__init__(255, 255, 255)

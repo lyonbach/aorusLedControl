@@ -138,6 +138,5 @@ class AorusLEDController(Device):
             for idx in range(4):
                 self.current_group_idx = idx
                 _set_color(color)
-
         if close:
             self.close()
