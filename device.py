@@ -1,4 +1,3 @@
-#!../venv/bin/python
 from color import Color
 import hid
 

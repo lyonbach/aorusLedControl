@@ -1,4 +1,4 @@
-#!../venv/bin/python
+#!./venv/bin/python
 
 from device import AorusLEDController
 from color import *
