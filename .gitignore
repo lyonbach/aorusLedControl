@@ -1,1 +1,11 @@
-interpreter
+venv
+__pycache__
+target
+Cargo.lock
+Cargo.toml
+*.rs.bk
+*.rlib
+debug/
+release/
+.idea/
+*.dSYM/
